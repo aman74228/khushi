@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Khushi — With All My Heart</title>
+  <title>For Khushi, With All My Heart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet" />
@@ -639,9 +639,80 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
-    @media (max-width: 500px) {
-      .cards-grid { grid-template-columns: 1fr; }
-      #page3 { padding-top: 3rem; }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      #page2 .content { gap: 1.4rem; padding: 5rem 1.4rem 2rem; }
+      .hero-para { font-size: 1.05rem; }
+
+      #page3 { padding: 5rem 1.2rem 3rem; }
+      #page3 .inner { gap: 2rem; }
+      .cards-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+      .card { padding: 1.4rem 1.2rem; }
+
+      #page4 .meter-wrap { gap: 1.5rem; padding: 5rem 1.4rem 2rem; }
+      .meter-track { width: min(80vw, 360px); height: 30px; }
+
+      #page5 .photo-wrap { padding: 5rem 1.2rem 2rem; gap: 1.2rem; }
+      .photo-frame { max-width: min(85vw, 420px); }
+
+      .btn { padding: 0.8rem 2rem; font-size: 1.05rem; }
+      .back-btn { font-size: 0.9rem; padding: 0.4rem 1rem 0.4rem 0.75rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      /* back button + toggle never overlap on small screens */
+      .back-btn { top: 0.9rem; left: 0.9rem; font-size: 0.85rem; }
+      .photo-toggle { top: 0.9rem; right: 0.9rem; width: 2.1rem; height: 2.1rem; font-size: 1rem; }
+
+      /* Page 1 */
+      #page1 .loader-wrap { gap: 1.5rem; padding: 1.5rem; }
+      .circle-loader { width: 82px; height: 82px; }
+
+      /* Page 2 */
+      #page2 .content { gap: 1.2rem; padding: 4.5rem 1.2rem 2rem; }
+      .hero-para { font-size: 1rem; line-height: 1.8; }
+
+      /* Page 3 */
+      #page3 { padding: 4.5rem 1rem 2.5rem; }
+      .cards-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .card { padding: 1.2rem 1rem; border-radius: 16px; }
+      .card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+      .card-text { font-size: 1rem; }
+      .shayari-card { padding: 2rem 1.4rem; border-radius: 18px; }
+      .shayari-text { font-size: 1rem; line-height: 1.9; }
+
+      /* Page 4 */
+      #page4 .meter-wrap { gap: 1.2rem; padding: 4.5rem 1.2rem 2rem; }
+      .meter-track { width: 82vw; height: 26px; border-radius: 13px; }
+      .meter-fill { border-radius: 13px; }
+
+      /* Page 5 */
+      #page5 .photo-wrap { padding: 4.5rem 1rem 2rem; gap: 1rem; }
+      .photo-frame {
+        max-width: 88vw;
+        aspect-ratio: 3/4;
+        border-radius: 16px;
+      }
+
+      /* Buttons */
+      .btn { padding: 0.75rem 1.8rem; font-size: 1rem; }
+
+      /* Shayari quote marks scale down */
+      .shayari-card::before,
+      .shayari-card::after { font-size: 2.8rem; }
+
+      /* reveal hint no overflow */
+      .reveal-hint { font-size: 1.1rem; white-space: normal; text-align: center; width: 80%; }
+    }
+
+    /* Very small screens */
+    @media (max-width: 360px) {
+      .hero-name { font-size: clamp(3rem, 18vw, 4.5rem); }
+      .section-title { font-size: 1.5rem; }
+      .meter-label { font-size: 1.2rem; }
+      .photo-frame { aspect-ratio: 1/1; }
     }
   </style>
 </head>
@@ -676,7 +747,7 @@
       <h1 class="hero-name">Khushi</h1>
       <p class="hero-para">
         There are words I never should have said, and words I should have said long before now.
-        This is my attempt — imperfect, but honest — to seek your forgiveness and remind you
+        This is my attempt, imperfect but honest, to seek your forgiveness and remind you
         how deeply, completely, and endlessly I love you.
         You deserve every apology I have, and so much more than I know how to give.
       </p>
@@ -704,12 +775,12 @@
           jise main khatam nahi karna chahta.<br/>
           Tujhse dur jaana possible nahi,<br/>
           kyunki tu hi meri duniya ka matlab hai.<br/><br/>
-          Koi duja nahi, koi replace nahi —<br/>
+          Koi duja nahi, koi replace nahi,<br/>
           tu mera anjaam hai, mera ghar hai.<br/>
           Jab bhi toota hoon, teri yaad ne hi<br/>
           mujhe phir se joda, phir se sambhala hai.
         </p>
-        <p class="shayari-attr">— written only for you ♡</p>
+        <p class="shayari-attr">written only for you ♡</p>
       </div>
 
       <button class="btn btn-secondary" onclick="goTo(4)">One last message →</button>
@@ -731,7 +802,7 @@
       </div>
       <div class="infinity-symbol" id="infinitySymbol">∞</div>
       <p class="meter-message" id="meterMsg">
-        The love meter broke — that's how much I love you.
+        The love meter broke. That's how much I love you.
       </p>
       <button class="btn btn-secondary" id="photoBtn" onclick="goTo(5)">Open me 💌</button>
     </div>
@@ -847,7 +918,7 @@
       { icon: '💔', text: 'I know I hurt you, and I\'m truly, deeply sorry.' },
       { icon: '🌹', text: 'You deserved so much better from me.' },
       { icon: '🤍', text: 'It\'s been hard for you, and I should have shown up more.' },
-      { icon: '🥺', text: 'I miss you — more than words will ever be able to say.' },
+      { icon: '🥺', text: 'I miss you, more than words will ever be able to say.' },
       { icon: '♾️', text: 'I\'ll always choose you. Every time. Without hesitation.' },
       { icon: '👑', text: 'You are the most important person in my entire world.' },
       { icon: '🌸', text: 'The way you love is rare. I will never take that for granted again.' },
