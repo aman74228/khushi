@@ -570,6 +570,59 @@
       animation: fadeSlideUp 1.2s ease forwards 0.5s;
       text-shadow: 0 0 20px rgba(255,154,158,0.4);
     }
+    /* Photo toggle button */
+    .photo-toggle {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 100;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      border: 1px solid rgba(248,180,200,0.35);
+      background: rgba(255,255,255,0.08);
+      color: var(--rose);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .photo-toggle:hover {
+      background: rgba(255,255,255,0.18);
+      transform: scale(1.1);
+    }
+    #page5.active .photo-toggle { display: flex; }
+
+    /* photo hidden state */
+    .photo-wrap.hidden .photo-frame,
+    .photo-wrap.hidden .photo-caption {
+      opacity: 0;
+      transform: scale(0.92);
+      pointer-events: none;
+    }
+    .photo-frame, .photo-caption {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .reveal-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      color: var(--rose);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .photo-wrap.hidden .reveal-hint { opacity: 1; }
+
     /* Floating rose petals on dark pages */
     #page4 .particle, #page5 .particle {
       color: var(--rose);
@@ -689,8 +742,9 @@
   ============================================================ -->
   <section id="page5" class="page">
     <button class="back-btn" onclick="goTo(4)">← back</button>
+    <button class="photo-toggle" id="photoToggle" title="Toggle photo">✕</button>
     <div class="particle-layer" id="particles5"></div>
-    <div class="photo-wrap">
+    <div class="photo-wrap" id="photoWrap">
       <div class="photo-frame">
         <img
           src="https://raw.githubusercontent.com/aman74228/khushi/main/photo.png"
@@ -699,6 +753,7 @@
         />
       </div>
       <p class="photo-caption">Us. Always. ♡</p>
+      <p class="reveal-hint">tap ♡ to reveal us again</p>
     </div>
   </section>
 
@@ -907,6 +962,22 @@
         loopParticles(5);
       }
     });
+
+    /* ============================================================
+       PAGE 5 — PHOTO TOGGLE
+    ============================================================ */
+    (function setupPhotoToggle() {
+      const btn  = document.getElementById('photoToggle');
+      const wrap = document.getElementById('photoWrap');
+      let hidden = false;
+
+      btn.addEventListener('click', () => {
+        hidden = !hidden;
+        wrap.classList.toggle('hidden', hidden);
+        btn.textContent = hidden ? '♡' : '✕';
+        btn.title = hidden ? 'Reveal photo' : 'Hide photo';
+      });
+    })();
   </script>
 </body>
 </html>
